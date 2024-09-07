@@ -1,0 +1,2543 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> STATEMENT
+Rule 1     STATEMENT -> TYPE_DECLARATION
+Rule 2     STATEMENT -> FUNCTION_DEFINITIONS
+Rule 3     STATEMENT -> <empty>
+Rule 4     FUNCTION_DEFINITIONS -> EXPRESSION EQUAL EXPRESSION
+Rule 5     FUNCTION_DEFINITIONS -> EXPRESSION CASE_LIST
+Rule 6     TYPE_DECLARATION -> IDENTIFIER DOUBLE_DOTS TYPE_LIST
+Rule 7     TYPE_LIST -> TYPE
+Rule 8     TYPE_LIST -> TYPE ARROW TYPE_LIST
+Rule 9     TYPE -> IDENTIFIER
+Rule 10    TYPE -> LBRACKET TYPE RBRACKET
+Rule 11    CASE_LIST -> CASE
+Rule 12    CASE_LIST -> CASE CASE_LIST
+Rule 13    CASE -> PIPE EXPRESSION EQUAL EXPRESSION
+Rule 14    EXPRESSION -> EXPRESSION_ELEM EXPRESSION
+Rule 15    EXPRESSION -> EXPRESSION_ELEM
+Rule 16    EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS
+Rule 17    EXPRESSION_ELEM -> VALUE
+Rule 18    EXPRESSION_ELEM -> OPERATOR
+Rule 19    OPERATOR -> PLUS
+Rule 20    OPERATOR -> MUL
+Rule 21    OPERATOR -> DIV
+Rule 22    OPERATOR -> MOD
+Rule 23    OPERATOR -> CONCAT
+Rule 24    VALUE -> IDENTIFIER
+Rule 25    VALUE -> INTEGER
+Rule 26    VALUE -> FLOAT
+Rule 27    VALUE -> STRING
+Rule 28    VALUE -> ENV_VAR
+Rule 29    VALUE -> JSON
+Rule 30    VALUE_LIST -> LBRACKET RBRACKET
+Rule 31    JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+Rule 32    JSON_KV_LIST -> JSON_KV
+Rule 33    JSON_KV -> IDENTIFIER DOTS JSON
+Rule 34    JSON_VALUE_LIST -> LBRACKET RBRACKET
+Rule 35    JSON_VALUE -> JSON_VALUE_LIST
+Rule 36    JSON_VALUE -> JSON
+Rule 37    ENV_VAR -> DOLLLAR IDENTIFIER
+Rule 38    JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST
+Rule 39    VALUE -> VALUE_LIST
+Rule 40    VALUE_LIST_R -> <empty>
+Rule 41    JSON_VALUE_LIST_R -> <empty>
+Rule 42    OPERATOR -> AND
+Rule 43    OPERATOR -> OR
+Rule 44    OPERATOR -> GREATER_THAN
+Rule 45    OPERATOR -> LESS_THAN
+Rule 46    OPERATOR -> GREATER_OR_EQUAL_THAN
+Rule 47    OPERATOR -> LESS_OR_EQUAL_THAN
+Rule 48    OPERATOR -> EQUALITY
+Rule 49    OPERATOR -> MINUS
+Rule 50    JSON_VALUE_LIST_R -> COMMA JSON_VALUE JSON_VALUE_LIST_R
+Rule 51    JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET
+Rule 52    JSON_KV_LIST -> JSON_KV COMMA JSON_KV_LIST
+Rule 53    JSON_VALUE -> IDENTIFIER
+Rule 54    JSON_VALUE -> INTEGER
+Rule 55    JSON_VALUE -> FLOAT
+Rule 56    JSON_VALUE -> STRING
+Rule 57    JSON_VALUE -> ENV_VAR
+Rule 58    JSON_KV -> IDENTIFIER DOTS JSON_VALUE
+Rule 59    VALUE -> BOOL
+Rule 60    JSON_VALUE -> BOOL
+Rule 61    TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS
+Rule 62    OPERATOR -> INEQUALITY
+Rule 63    JSON_VALUE -> LPARANTHESIS EXPRESSION RPARANTHESIS
+Rule 64    VALUE -> TYPE_CAST
+Rule 65    TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN
+Rule 66    VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+Rule 67    VALUE_LIST_R -> COMMA EXPRESSION_ELEM VALUE_LIST_R
+
+Terminals, with rules where they appear
+
+AND                  : 42
+ARROW                : 8
+BOOL                 : 59 60
+COMMA                : 50 52 67
+CONCAT               : 23
+DIV                  : 21
+DOLLLAR              : 37
+DOTS                 : 33 38 58
+DOUBLE_DOTS          : 6
+EQUAL                : 4 13
+EQUALITY             : 48
+FLOAT                : 26 55
+GREATER_OR_EQUAL_THAN : 46
+GREATER_THAN         : 44 65
+IDENTIFIER           : 6 9 24 33 37 38 53 58
+INEQUALITY           : 62
+INTEGER              : 25 54
+LBRACKET             : 10 30 34 51 66
+LCURLYBRACES         : 31
+LESS_OR_EQUAL_THAN   : 47
+LESS_THAN            : 45 65
+LPARANTHESIS         : 16 61 63
+MINUS                : 49
+MOD                  : 22
+MUL                  : 20
+OR                   : 43
+PIPE                 : 13
+PLUS                 : 19
+RBRACKET             : 10 30 34 51 66
+RCURLYBRACES         : 31
+RPARANTHESIS         : 16 61 63
+STRING               : 27 56
+error                : 
+
+Nonterminals, with rules where they appear
+
+CASE                 : 11 12
+CASE_LIST            : 5 12
+ENV_VAR              : 28 57
+EXPRESSION           : 4 4 5 13 13 14 16 63
+EXPRESSION_ELEM      : 14 15 66 67
+FUNCTION_DEFINITIONS : 2
+JSON                 : 29 33 36
+JSON_KV              : 32 52
+JSON_KV_LIST         : 31 52
+JSON_VALUE           : 50 51 58
+JSON_VALUE_LIST      : 35 38
+JSON_VALUE_LIST_R    : 50 51
+OPERATOR             : 18
+STATEMENT            : 0
+TYPE                 : 7 8 10
+TYPE_CAST            : 64
+TYPE_DECLARATION     : 1
+TYPE_LIST            : 6 8 61 65
+VALUE                : 17
+VALUE_LIST           : 39
+VALUE_LIST_R         : 66 67
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . STATEMENT
+    (1) STATEMENT -> . TYPE_DECLARATION
+    (2) STATEMENT -> . FUNCTION_DEFINITIONS
+    (3) STATEMENT -> .
+    (6) TYPE_DECLARATION -> . IDENTIFIER DOUBLE_DOTS TYPE_LIST
+    (4) FUNCTION_DEFINITIONS -> . EXPRESSION EQUAL EXPRESSION
+    (5) FUNCTION_DEFINITIONS -> . EXPRESSION CASE_LIST
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    $end            reduce using rule 3 (STATEMENT -> .)
+    IDENTIFIER      shift and go to state 4
+    LPARANTHESIS    shift and go to state 7
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    STATEMENT                      shift and go to state 1
+    TYPE_DECLARATION               shift and go to state 2
+    FUNCTION_DEFINITIONS           shift and go to state 3
+    EXPRESSION                     shift and go to state 5
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 1
+
+    (0) S' -> STATEMENT .
+
+
+
+state 2
+
+    (1) STATEMENT -> TYPE_DECLARATION .
+
+    $end            reduce using rule 1 (STATEMENT -> TYPE_DECLARATION .)
+
+
+state 3
+
+    (2) STATEMENT -> FUNCTION_DEFINITIONS .
+
+    $end            reduce using rule 2 (STATEMENT -> FUNCTION_DEFINITIONS .)
+
+
+state 4
+
+    (6) TYPE_DECLARATION -> IDENTIFIER . DOUBLE_DOTS TYPE_LIST
+    (24) VALUE -> IDENTIFIER .
+
+    DOUBLE_DOTS     shift and go to state 35
+    LPARANTHESIS    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 24 (VALUE -> IDENTIFIER .)
+    INTEGER         reduce using rule 24 (VALUE -> IDENTIFIER .)
+    FLOAT           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    STRING          reduce using rule 24 (VALUE -> IDENTIFIER .)
+    BOOL            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    PLUS            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MUL             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    DIV             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MOD             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    CONCAT          reduce using rule 24 (VALUE -> IDENTIFIER .)
+    AND             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    OR              reduce using rule 24 (VALUE -> IDENTIFIER .)
+    GREATER_THAN    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LESS_THAN       reduce using rule 24 (VALUE -> IDENTIFIER .)
+    GREATER_OR_EQUAL_THAN reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LESS_OR_EQUAL_THAN reduce using rule 24 (VALUE -> IDENTIFIER .)
+    EQUALITY        reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MINUS           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    INEQUALITY      reduce using rule 24 (VALUE -> IDENTIFIER .)
+    DOLLLAR         reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LCURLYBRACES    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LBRACKET        reduce using rule 24 (VALUE -> IDENTIFIER .)
+    EQUAL           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    PIPE            reduce using rule 24 (VALUE -> IDENTIFIER .)
+
+
+state 5
+
+    (4) FUNCTION_DEFINITIONS -> EXPRESSION . EQUAL EXPRESSION
+    (5) FUNCTION_DEFINITIONS -> EXPRESSION . CASE_LIST
+    (11) CASE_LIST -> . CASE
+    (12) CASE_LIST -> . CASE CASE_LIST
+    (13) CASE -> . PIPE EXPRESSION EQUAL EXPRESSION
+
+    EQUAL           shift and go to state 36
+    PIPE            shift and go to state 39
+
+    CASE_LIST                      shift and go to state 37
+    CASE                           shift and go to state 38
+
+state 6
+
+    (14) EXPRESSION -> EXPRESSION_ELEM . EXPRESSION
+    (15) EXPRESSION -> EXPRESSION_ELEM .
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    EQUAL           reduce using rule 15 (EXPRESSION -> EXPRESSION_ELEM .)
+    PIPE            reduce using rule 15 (EXPRESSION -> EXPRESSION_ELEM .)
+    RPARANTHESIS    reduce using rule 15 (EXPRESSION -> EXPRESSION_ELEM .)
+    $end            reduce using rule 15 (EXPRESSION -> EXPRESSION_ELEM .)
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION_ELEM                shift and go to state 6
+    EXPRESSION                     shift and go to state 40
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 7
+
+    (16) EXPRESSION_ELEM -> LPARANTHESIS . EXPRESSION RPARANTHESIS
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION                     shift and go to state 42
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 8
+
+    (17) EXPRESSION_ELEM -> VALUE .
+
+    LPARANTHESIS    reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    IDENTIFIER      reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    INTEGER         reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    FLOAT           reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    STRING          reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    BOOL            reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    PLUS            reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    MUL             reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    DIV             reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    MOD             reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    CONCAT          reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    AND             reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    OR              reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    GREATER_THAN    reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    LESS_THAN       reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    GREATER_OR_EQUAL_THAN reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    LESS_OR_EQUAL_THAN reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    EQUALITY        reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    MINUS           reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    INEQUALITY      reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    DOLLLAR         reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    LCURLYBRACES    reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    LBRACKET        reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    EQUAL           reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    PIPE            reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    RPARANTHESIS    reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    $end            reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    COMMA           reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+    RBRACKET        reduce using rule 17 (EXPRESSION_ELEM -> VALUE .)
+
+
+state 9
+
+    (18) EXPRESSION_ELEM -> OPERATOR .
+
+    LPARANTHESIS    reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    IDENTIFIER      reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    INTEGER         reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    FLOAT           reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    STRING          reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    BOOL            reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    PLUS            reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    MUL             reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    DIV             reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    MOD             reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    CONCAT          reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    AND             reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    OR              reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    GREATER_THAN    reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    LESS_THAN       reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    GREATER_OR_EQUAL_THAN reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    LESS_OR_EQUAL_THAN reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    EQUALITY        reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    MINUS           reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    INEQUALITY      reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    DOLLLAR         reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    LCURLYBRACES    reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    LBRACKET        reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    EQUAL           reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    PIPE            reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    RPARANTHESIS    reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    $end            reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    COMMA           reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+    RBRACKET        reduce using rule 18 (EXPRESSION_ELEM -> OPERATOR .)
+
+
+state 10
+
+    (25) VALUE -> INTEGER .
+
+    LPARANTHESIS    reduce using rule 25 (VALUE -> INTEGER .)
+    IDENTIFIER      reduce using rule 25 (VALUE -> INTEGER .)
+    INTEGER         reduce using rule 25 (VALUE -> INTEGER .)
+    FLOAT           reduce using rule 25 (VALUE -> INTEGER .)
+    STRING          reduce using rule 25 (VALUE -> INTEGER .)
+    BOOL            reduce using rule 25 (VALUE -> INTEGER .)
+    PLUS            reduce using rule 25 (VALUE -> INTEGER .)
+    MUL             reduce using rule 25 (VALUE -> INTEGER .)
+    DIV             reduce using rule 25 (VALUE -> INTEGER .)
+    MOD             reduce using rule 25 (VALUE -> INTEGER .)
+    CONCAT          reduce using rule 25 (VALUE -> INTEGER .)
+    AND             reduce using rule 25 (VALUE -> INTEGER .)
+    OR              reduce using rule 25 (VALUE -> INTEGER .)
+    GREATER_THAN    reduce using rule 25 (VALUE -> INTEGER .)
+    LESS_THAN       reduce using rule 25 (VALUE -> INTEGER .)
+    GREATER_OR_EQUAL_THAN reduce using rule 25 (VALUE -> INTEGER .)
+    LESS_OR_EQUAL_THAN reduce using rule 25 (VALUE -> INTEGER .)
+    EQUALITY        reduce using rule 25 (VALUE -> INTEGER .)
+    MINUS           reduce using rule 25 (VALUE -> INTEGER .)
+    INEQUALITY      reduce using rule 25 (VALUE -> INTEGER .)
+    DOLLLAR         reduce using rule 25 (VALUE -> INTEGER .)
+    LCURLYBRACES    reduce using rule 25 (VALUE -> INTEGER .)
+    LBRACKET        reduce using rule 25 (VALUE -> INTEGER .)
+    EQUAL           reduce using rule 25 (VALUE -> INTEGER .)
+    PIPE            reduce using rule 25 (VALUE -> INTEGER .)
+    RPARANTHESIS    reduce using rule 25 (VALUE -> INTEGER .)
+    $end            reduce using rule 25 (VALUE -> INTEGER .)
+    COMMA           reduce using rule 25 (VALUE -> INTEGER .)
+    RBRACKET        reduce using rule 25 (VALUE -> INTEGER .)
+
+
+state 11
+
+    (26) VALUE -> FLOAT .
+
+    LPARANTHESIS    reduce using rule 26 (VALUE -> FLOAT .)
+    IDENTIFIER      reduce using rule 26 (VALUE -> FLOAT .)
+    INTEGER         reduce using rule 26 (VALUE -> FLOAT .)
+    FLOAT           reduce using rule 26 (VALUE -> FLOAT .)
+    STRING          reduce using rule 26 (VALUE -> FLOAT .)
+    BOOL            reduce using rule 26 (VALUE -> FLOAT .)
+    PLUS            reduce using rule 26 (VALUE -> FLOAT .)
+    MUL             reduce using rule 26 (VALUE -> FLOAT .)
+    DIV             reduce using rule 26 (VALUE -> FLOAT .)
+    MOD             reduce using rule 26 (VALUE -> FLOAT .)
+    CONCAT          reduce using rule 26 (VALUE -> FLOAT .)
+    AND             reduce using rule 26 (VALUE -> FLOAT .)
+    OR              reduce using rule 26 (VALUE -> FLOAT .)
+    GREATER_THAN    reduce using rule 26 (VALUE -> FLOAT .)
+    LESS_THAN       reduce using rule 26 (VALUE -> FLOAT .)
+    GREATER_OR_EQUAL_THAN reduce using rule 26 (VALUE -> FLOAT .)
+    LESS_OR_EQUAL_THAN reduce using rule 26 (VALUE -> FLOAT .)
+    EQUALITY        reduce using rule 26 (VALUE -> FLOAT .)
+    MINUS           reduce using rule 26 (VALUE -> FLOAT .)
+    INEQUALITY      reduce using rule 26 (VALUE -> FLOAT .)
+    DOLLLAR         reduce using rule 26 (VALUE -> FLOAT .)
+    LCURLYBRACES    reduce using rule 26 (VALUE -> FLOAT .)
+    LBRACKET        reduce using rule 26 (VALUE -> FLOAT .)
+    EQUAL           reduce using rule 26 (VALUE -> FLOAT .)
+    PIPE            reduce using rule 26 (VALUE -> FLOAT .)
+    RPARANTHESIS    reduce using rule 26 (VALUE -> FLOAT .)
+    $end            reduce using rule 26 (VALUE -> FLOAT .)
+    COMMA           reduce using rule 26 (VALUE -> FLOAT .)
+    RBRACKET        reduce using rule 26 (VALUE -> FLOAT .)
+
+
+state 12
+
+    (27) VALUE -> STRING .
+
+    LPARANTHESIS    reduce using rule 27 (VALUE -> STRING .)
+    IDENTIFIER      reduce using rule 27 (VALUE -> STRING .)
+    INTEGER         reduce using rule 27 (VALUE -> STRING .)
+    FLOAT           reduce using rule 27 (VALUE -> STRING .)
+    STRING          reduce using rule 27 (VALUE -> STRING .)
+    BOOL            reduce using rule 27 (VALUE -> STRING .)
+    PLUS            reduce using rule 27 (VALUE -> STRING .)
+    MUL             reduce using rule 27 (VALUE -> STRING .)
+    DIV             reduce using rule 27 (VALUE -> STRING .)
+    MOD             reduce using rule 27 (VALUE -> STRING .)
+    CONCAT          reduce using rule 27 (VALUE -> STRING .)
+    AND             reduce using rule 27 (VALUE -> STRING .)
+    OR              reduce using rule 27 (VALUE -> STRING .)
+    GREATER_THAN    reduce using rule 27 (VALUE -> STRING .)
+    LESS_THAN       reduce using rule 27 (VALUE -> STRING .)
+    GREATER_OR_EQUAL_THAN reduce using rule 27 (VALUE -> STRING .)
+    LESS_OR_EQUAL_THAN reduce using rule 27 (VALUE -> STRING .)
+    EQUALITY        reduce using rule 27 (VALUE -> STRING .)
+    MINUS           reduce using rule 27 (VALUE -> STRING .)
+    INEQUALITY      reduce using rule 27 (VALUE -> STRING .)
+    DOLLLAR         reduce using rule 27 (VALUE -> STRING .)
+    LCURLYBRACES    reduce using rule 27 (VALUE -> STRING .)
+    LBRACKET        reduce using rule 27 (VALUE -> STRING .)
+    EQUAL           reduce using rule 27 (VALUE -> STRING .)
+    PIPE            reduce using rule 27 (VALUE -> STRING .)
+    RPARANTHESIS    reduce using rule 27 (VALUE -> STRING .)
+    $end            reduce using rule 27 (VALUE -> STRING .)
+    COMMA           reduce using rule 27 (VALUE -> STRING .)
+    RBRACKET        reduce using rule 27 (VALUE -> STRING .)
+
+
+state 13
+
+    (28) VALUE -> ENV_VAR .
+
+    LPARANTHESIS    reduce using rule 28 (VALUE -> ENV_VAR .)
+    IDENTIFIER      reduce using rule 28 (VALUE -> ENV_VAR .)
+    INTEGER         reduce using rule 28 (VALUE -> ENV_VAR .)
+    FLOAT           reduce using rule 28 (VALUE -> ENV_VAR .)
+    STRING          reduce using rule 28 (VALUE -> ENV_VAR .)
+    BOOL            reduce using rule 28 (VALUE -> ENV_VAR .)
+    PLUS            reduce using rule 28 (VALUE -> ENV_VAR .)
+    MUL             reduce using rule 28 (VALUE -> ENV_VAR .)
+    DIV             reduce using rule 28 (VALUE -> ENV_VAR .)
+    MOD             reduce using rule 28 (VALUE -> ENV_VAR .)
+    CONCAT          reduce using rule 28 (VALUE -> ENV_VAR .)
+    AND             reduce using rule 28 (VALUE -> ENV_VAR .)
+    OR              reduce using rule 28 (VALUE -> ENV_VAR .)
+    GREATER_THAN    reduce using rule 28 (VALUE -> ENV_VAR .)
+    LESS_THAN       reduce using rule 28 (VALUE -> ENV_VAR .)
+    GREATER_OR_EQUAL_THAN reduce using rule 28 (VALUE -> ENV_VAR .)
+    LESS_OR_EQUAL_THAN reduce using rule 28 (VALUE -> ENV_VAR .)
+    EQUALITY        reduce using rule 28 (VALUE -> ENV_VAR .)
+    MINUS           reduce using rule 28 (VALUE -> ENV_VAR .)
+    INEQUALITY      reduce using rule 28 (VALUE -> ENV_VAR .)
+    DOLLLAR         reduce using rule 28 (VALUE -> ENV_VAR .)
+    LCURLYBRACES    reduce using rule 28 (VALUE -> ENV_VAR .)
+    LBRACKET        reduce using rule 28 (VALUE -> ENV_VAR .)
+    EQUAL           reduce using rule 28 (VALUE -> ENV_VAR .)
+    PIPE            reduce using rule 28 (VALUE -> ENV_VAR .)
+    RPARANTHESIS    reduce using rule 28 (VALUE -> ENV_VAR .)
+    $end            reduce using rule 28 (VALUE -> ENV_VAR .)
+    COMMA           reduce using rule 28 (VALUE -> ENV_VAR .)
+    RBRACKET        reduce using rule 28 (VALUE -> ENV_VAR .)
+
+
+state 14
+
+    (29) VALUE -> JSON .
+
+    LPARANTHESIS    reduce using rule 29 (VALUE -> JSON .)
+    IDENTIFIER      reduce using rule 29 (VALUE -> JSON .)
+    INTEGER         reduce using rule 29 (VALUE -> JSON .)
+    FLOAT           reduce using rule 29 (VALUE -> JSON .)
+    STRING          reduce using rule 29 (VALUE -> JSON .)
+    BOOL            reduce using rule 29 (VALUE -> JSON .)
+    PLUS            reduce using rule 29 (VALUE -> JSON .)
+    MUL             reduce using rule 29 (VALUE -> JSON .)
+    DIV             reduce using rule 29 (VALUE -> JSON .)
+    MOD             reduce using rule 29 (VALUE -> JSON .)
+    CONCAT          reduce using rule 29 (VALUE -> JSON .)
+    AND             reduce using rule 29 (VALUE -> JSON .)
+    OR              reduce using rule 29 (VALUE -> JSON .)
+    GREATER_THAN    reduce using rule 29 (VALUE -> JSON .)
+    LESS_THAN       reduce using rule 29 (VALUE -> JSON .)
+    GREATER_OR_EQUAL_THAN reduce using rule 29 (VALUE -> JSON .)
+    LESS_OR_EQUAL_THAN reduce using rule 29 (VALUE -> JSON .)
+    EQUALITY        reduce using rule 29 (VALUE -> JSON .)
+    MINUS           reduce using rule 29 (VALUE -> JSON .)
+    INEQUALITY      reduce using rule 29 (VALUE -> JSON .)
+    DOLLLAR         reduce using rule 29 (VALUE -> JSON .)
+    LCURLYBRACES    reduce using rule 29 (VALUE -> JSON .)
+    LBRACKET        reduce using rule 29 (VALUE -> JSON .)
+    EQUAL           reduce using rule 29 (VALUE -> JSON .)
+    PIPE            reduce using rule 29 (VALUE -> JSON .)
+    RPARANTHESIS    reduce using rule 29 (VALUE -> JSON .)
+    $end            reduce using rule 29 (VALUE -> JSON .)
+    COMMA           reduce using rule 29 (VALUE -> JSON .)
+    RBRACKET        reduce using rule 29 (VALUE -> JSON .)
+
+
+state 15
+
+    (39) VALUE -> VALUE_LIST .
+
+    LPARANTHESIS    reduce using rule 39 (VALUE -> VALUE_LIST .)
+    IDENTIFIER      reduce using rule 39 (VALUE -> VALUE_LIST .)
+    INTEGER         reduce using rule 39 (VALUE -> VALUE_LIST .)
+    FLOAT           reduce using rule 39 (VALUE -> VALUE_LIST .)
+    STRING          reduce using rule 39 (VALUE -> VALUE_LIST .)
+    BOOL            reduce using rule 39 (VALUE -> VALUE_LIST .)
+    PLUS            reduce using rule 39 (VALUE -> VALUE_LIST .)
+    MUL             reduce using rule 39 (VALUE -> VALUE_LIST .)
+    DIV             reduce using rule 39 (VALUE -> VALUE_LIST .)
+    MOD             reduce using rule 39 (VALUE -> VALUE_LIST .)
+    CONCAT          reduce using rule 39 (VALUE -> VALUE_LIST .)
+    AND             reduce using rule 39 (VALUE -> VALUE_LIST .)
+    OR              reduce using rule 39 (VALUE -> VALUE_LIST .)
+    GREATER_THAN    reduce using rule 39 (VALUE -> VALUE_LIST .)
+    LESS_THAN       reduce using rule 39 (VALUE -> VALUE_LIST .)
+    GREATER_OR_EQUAL_THAN reduce using rule 39 (VALUE -> VALUE_LIST .)
+    LESS_OR_EQUAL_THAN reduce using rule 39 (VALUE -> VALUE_LIST .)
+    EQUALITY        reduce using rule 39 (VALUE -> VALUE_LIST .)
+    MINUS           reduce using rule 39 (VALUE -> VALUE_LIST .)
+    INEQUALITY      reduce using rule 39 (VALUE -> VALUE_LIST .)
+    DOLLLAR         reduce using rule 39 (VALUE -> VALUE_LIST .)
+    LCURLYBRACES    reduce using rule 39 (VALUE -> VALUE_LIST .)
+    LBRACKET        reduce using rule 39 (VALUE -> VALUE_LIST .)
+    EQUAL           reduce using rule 39 (VALUE -> VALUE_LIST .)
+    PIPE            reduce using rule 39 (VALUE -> VALUE_LIST .)
+    RPARANTHESIS    reduce using rule 39 (VALUE -> VALUE_LIST .)
+    $end            reduce using rule 39 (VALUE -> VALUE_LIST .)
+    COMMA           reduce using rule 39 (VALUE -> VALUE_LIST .)
+    RBRACKET        reduce using rule 39 (VALUE -> VALUE_LIST .)
+
+
+state 16
+
+    (59) VALUE -> BOOL .
+
+    LPARANTHESIS    reduce using rule 59 (VALUE -> BOOL .)
+    IDENTIFIER      reduce using rule 59 (VALUE -> BOOL .)
+    INTEGER         reduce using rule 59 (VALUE -> BOOL .)
+    FLOAT           reduce using rule 59 (VALUE -> BOOL .)
+    STRING          reduce using rule 59 (VALUE -> BOOL .)
+    BOOL            reduce using rule 59 (VALUE -> BOOL .)
+    PLUS            reduce using rule 59 (VALUE -> BOOL .)
+    MUL             reduce using rule 59 (VALUE -> BOOL .)
+    DIV             reduce using rule 59 (VALUE -> BOOL .)
+    MOD             reduce using rule 59 (VALUE -> BOOL .)
+    CONCAT          reduce using rule 59 (VALUE -> BOOL .)
+    AND             reduce using rule 59 (VALUE -> BOOL .)
+    OR              reduce using rule 59 (VALUE -> BOOL .)
+    GREATER_THAN    reduce using rule 59 (VALUE -> BOOL .)
+    LESS_THAN       reduce using rule 59 (VALUE -> BOOL .)
+    GREATER_OR_EQUAL_THAN reduce using rule 59 (VALUE -> BOOL .)
+    LESS_OR_EQUAL_THAN reduce using rule 59 (VALUE -> BOOL .)
+    EQUALITY        reduce using rule 59 (VALUE -> BOOL .)
+    MINUS           reduce using rule 59 (VALUE -> BOOL .)
+    INEQUALITY      reduce using rule 59 (VALUE -> BOOL .)
+    DOLLLAR         reduce using rule 59 (VALUE -> BOOL .)
+    LCURLYBRACES    reduce using rule 59 (VALUE -> BOOL .)
+    LBRACKET        reduce using rule 59 (VALUE -> BOOL .)
+    EQUAL           reduce using rule 59 (VALUE -> BOOL .)
+    PIPE            reduce using rule 59 (VALUE -> BOOL .)
+    RPARANTHESIS    reduce using rule 59 (VALUE -> BOOL .)
+    $end            reduce using rule 59 (VALUE -> BOOL .)
+    COMMA           reduce using rule 59 (VALUE -> BOOL .)
+    RBRACKET        reduce using rule 59 (VALUE -> BOOL .)
+
+
+state 17
+
+    (64) VALUE -> TYPE_CAST .
+
+    LPARANTHESIS    reduce using rule 64 (VALUE -> TYPE_CAST .)
+    IDENTIFIER      reduce using rule 64 (VALUE -> TYPE_CAST .)
+    INTEGER         reduce using rule 64 (VALUE -> TYPE_CAST .)
+    FLOAT           reduce using rule 64 (VALUE -> TYPE_CAST .)
+    STRING          reduce using rule 64 (VALUE -> TYPE_CAST .)
+    BOOL            reduce using rule 64 (VALUE -> TYPE_CAST .)
+    PLUS            reduce using rule 64 (VALUE -> TYPE_CAST .)
+    MUL             reduce using rule 64 (VALUE -> TYPE_CAST .)
+    DIV             reduce using rule 64 (VALUE -> TYPE_CAST .)
+    MOD             reduce using rule 64 (VALUE -> TYPE_CAST .)
+    CONCAT          reduce using rule 64 (VALUE -> TYPE_CAST .)
+    AND             reduce using rule 64 (VALUE -> TYPE_CAST .)
+    OR              reduce using rule 64 (VALUE -> TYPE_CAST .)
+    GREATER_THAN    reduce using rule 64 (VALUE -> TYPE_CAST .)
+    LESS_THAN       reduce using rule 64 (VALUE -> TYPE_CAST .)
+    GREATER_OR_EQUAL_THAN reduce using rule 64 (VALUE -> TYPE_CAST .)
+    LESS_OR_EQUAL_THAN reduce using rule 64 (VALUE -> TYPE_CAST .)
+    EQUALITY        reduce using rule 64 (VALUE -> TYPE_CAST .)
+    MINUS           reduce using rule 64 (VALUE -> TYPE_CAST .)
+    INEQUALITY      reduce using rule 64 (VALUE -> TYPE_CAST .)
+    DOLLLAR         reduce using rule 64 (VALUE -> TYPE_CAST .)
+    LCURLYBRACES    reduce using rule 64 (VALUE -> TYPE_CAST .)
+    LBRACKET        reduce using rule 64 (VALUE -> TYPE_CAST .)
+    EQUAL           reduce using rule 64 (VALUE -> TYPE_CAST .)
+    PIPE            reduce using rule 64 (VALUE -> TYPE_CAST .)
+    RPARANTHESIS    reduce using rule 64 (VALUE -> TYPE_CAST .)
+    $end            reduce using rule 64 (VALUE -> TYPE_CAST .)
+    COMMA           reduce using rule 64 (VALUE -> TYPE_CAST .)
+    RBRACKET        reduce using rule 64 (VALUE -> TYPE_CAST .)
+
+
+state 18
+
+    (19) OPERATOR -> PLUS .
+
+    LPARANTHESIS    reduce using rule 19 (OPERATOR -> PLUS .)
+    IDENTIFIER      reduce using rule 19 (OPERATOR -> PLUS .)
+    INTEGER         reduce using rule 19 (OPERATOR -> PLUS .)
+    FLOAT           reduce using rule 19 (OPERATOR -> PLUS .)
+    STRING          reduce using rule 19 (OPERATOR -> PLUS .)
+    BOOL            reduce using rule 19 (OPERATOR -> PLUS .)
+    PLUS            reduce using rule 19 (OPERATOR -> PLUS .)
+    MUL             reduce using rule 19 (OPERATOR -> PLUS .)
+    DIV             reduce using rule 19 (OPERATOR -> PLUS .)
+    MOD             reduce using rule 19 (OPERATOR -> PLUS .)
+    CONCAT          reduce using rule 19 (OPERATOR -> PLUS .)
+    AND             reduce using rule 19 (OPERATOR -> PLUS .)
+    OR              reduce using rule 19 (OPERATOR -> PLUS .)
+    GREATER_THAN    reduce using rule 19 (OPERATOR -> PLUS .)
+    LESS_THAN       reduce using rule 19 (OPERATOR -> PLUS .)
+    GREATER_OR_EQUAL_THAN reduce using rule 19 (OPERATOR -> PLUS .)
+    LESS_OR_EQUAL_THAN reduce using rule 19 (OPERATOR -> PLUS .)
+    EQUALITY        reduce using rule 19 (OPERATOR -> PLUS .)
+    MINUS           reduce using rule 19 (OPERATOR -> PLUS .)
+    INEQUALITY      reduce using rule 19 (OPERATOR -> PLUS .)
+    DOLLLAR         reduce using rule 19 (OPERATOR -> PLUS .)
+    LCURLYBRACES    reduce using rule 19 (OPERATOR -> PLUS .)
+    LBRACKET        reduce using rule 19 (OPERATOR -> PLUS .)
+    EQUAL           reduce using rule 19 (OPERATOR -> PLUS .)
+    PIPE            reduce using rule 19 (OPERATOR -> PLUS .)
+    RPARANTHESIS    reduce using rule 19 (OPERATOR -> PLUS .)
+    $end            reduce using rule 19 (OPERATOR -> PLUS .)
+    COMMA           reduce using rule 19 (OPERATOR -> PLUS .)
+    RBRACKET        reduce using rule 19 (OPERATOR -> PLUS .)
+
+
+state 19
+
+    (20) OPERATOR -> MUL .
+
+    LPARANTHESIS    reduce using rule 20 (OPERATOR -> MUL .)
+    IDENTIFIER      reduce using rule 20 (OPERATOR -> MUL .)
+    INTEGER         reduce using rule 20 (OPERATOR -> MUL .)
+    FLOAT           reduce using rule 20 (OPERATOR -> MUL .)
+    STRING          reduce using rule 20 (OPERATOR -> MUL .)
+    BOOL            reduce using rule 20 (OPERATOR -> MUL .)
+    PLUS            reduce using rule 20 (OPERATOR -> MUL .)
+    MUL             reduce using rule 20 (OPERATOR -> MUL .)
+    DIV             reduce using rule 20 (OPERATOR -> MUL .)
+    MOD             reduce using rule 20 (OPERATOR -> MUL .)
+    CONCAT          reduce using rule 20 (OPERATOR -> MUL .)
+    AND             reduce using rule 20 (OPERATOR -> MUL .)
+    OR              reduce using rule 20 (OPERATOR -> MUL .)
+    GREATER_THAN    reduce using rule 20 (OPERATOR -> MUL .)
+    LESS_THAN       reduce using rule 20 (OPERATOR -> MUL .)
+    GREATER_OR_EQUAL_THAN reduce using rule 20 (OPERATOR -> MUL .)
+    LESS_OR_EQUAL_THAN reduce using rule 20 (OPERATOR -> MUL .)
+    EQUALITY        reduce using rule 20 (OPERATOR -> MUL .)
+    MINUS           reduce using rule 20 (OPERATOR -> MUL .)
+    INEQUALITY      reduce using rule 20 (OPERATOR -> MUL .)
+    DOLLLAR         reduce using rule 20 (OPERATOR -> MUL .)
+    LCURLYBRACES    reduce using rule 20 (OPERATOR -> MUL .)
+    LBRACKET        reduce using rule 20 (OPERATOR -> MUL .)
+    EQUAL           reduce using rule 20 (OPERATOR -> MUL .)
+    PIPE            reduce using rule 20 (OPERATOR -> MUL .)
+    RPARANTHESIS    reduce using rule 20 (OPERATOR -> MUL .)
+    $end            reduce using rule 20 (OPERATOR -> MUL .)
+    COMMA           reduce using rule 20 (OPERATOR -> MUL .)
+    RBRACKET        reduce using rule 20 (OPERATOR -> MUL .)
+
+
+state 20
+
+    (21) OPERATOR -> DIV .
+
+    LPARANTHESIS    reduce using rule 21 (OPERATOR -> DIV .)
+    IDENTIFIER      reduce using rule 21 (OPERATOR -> DIV .)
+    INTEGER         reduce using rule 21 (OPERATOR -> DIV .)
+    FLOAT           reduce using rule 21 (OPERATOR -> DIV .)
+    STRING          reduce using rule 21 (OPERATOR -> DIV .)
+    BOOL            reduce using rule 21 (OPERATOR -> DIV .)
+    PLUS            reduce using rule 21 (OPERATOR -> DIV .)
+    MUL             reduce using rule 21 (OPERATOR -> DIV .)
+    DIV             reduce using rule 21 (OPERATOR -> DIV .)
+    MOD             reduce using rule 21 (OPERATOR -> DIV .)
+    CONCAT          reduce using rule 21 (OPERATOR -> DIV .)
+    AND             reduce using rule 21 (OPERATOR -> DIV .)
+    OR              reduce using rule 21 (OPERATOR -> DIV .)
+    GREATER_THAN    reduce using rule 21 (OPERATOR -> DIV .)
+    LESS_THAN       reduce using rule 21 (OPERATOR -> DIV .)
+    GREATER_OR_EQUAL_THAN reduce using rule 21 (OPERATOR -> DIV .)
+    LESS_OR_EQUAL_THAN reduce using rule 21 (OPERATOR -> DIV .)
+    EQUALITY        reduce using rule 21 (OPERATOR -> DIV .)
+    MINUS           reduce using rule 21 (OPERATOR -> DIV .)
+    INEQUALITY      reduce using rule 21 (OPERATOR -> DIV .)
+    DOLLLAR         reduce using rule 21 (OPERATOR -> DIV .)
+    LCURLYBRACES    reduce using rule 21 (OPERATOR -> DIV .)
+    LBRACKET        reduce using rule 21 (OPERATOR -> DIV .)
+    EQUAL           reduce using rule 21 (OPERATOR -> DIV .)
+    PIPE            reduce using rule 21 (OPERATOR -> DIV .)
+    RPARANTHESIS    reduce using rule 21 (OPERATOR -> DIV .)
+    $end            reduce using rule 21 (OPERATOR -> DIV .)
+    COMMA           reduce using rule 21 (OPERATOR -> DIV .)
+    RBRACKET        reduce using rule 21 (OPERATOR -> DIV .)
+
+
+state 21
+
+    (22) OPERATOR -> MOD .
+
+    LPARANTHESIS    reduce using rule 22 (OPERATOR -> MOD .)
+    IDENTIFIER      reduce using rule 22 (OPERATOR -> MOD .)
+    INTEGER         reduce using rule 22 (OPERATOR -> MOD .)
+    FLOAT           reduce using rule 22 (OPERATOR -> MOD .)
+    STRING          reduce using rule 22 (OPERATOR -> MOD .)
+    BOOL            reduce using rule 22 (OPERATOR -> MOD .)
+    PLUS            reduce using rule 22 (OPERATOR -> MOD .)
+    MUL             reduce using rule 22 (OPERATOR -> MOD .)
+    DIV             reduce using rule 22 (OPERATOR -> MOD .)
+    MOD             reduce using rule 22 (OPERATOR -> MOD .)
+    CONCAT          reduce using rule 22 (OPERATOR -> MOD .)
+    AND             reduce using rule 22 (OPERATOR -> MOD .)
+    OR              reduce using rule 22 (OPERATOR -> MOD .)
+    GREATER_THAN    reduce using rule 22 (OPERATOR -> MOD .)
+    LESS_THAN       reduce using rule 22 (OPERATOR -> MOD .)
+    GREATER_OR_EQUAL_THAN reduce using rule 22 (OPERATOR -> MOD .)
+    LESS_OR_EQUAL_THAN reduce using rule 22 (OPERATOR -> MOD .)
+    EQUALITY        reduce using rule 22 (OPERATOR -> MOD .)
+    MINUS           reduce using rule 22 (OPERATOR -> MOD .)
+    INEQUALITY      reduce using rule 22 (OPERATOR -> MOD .)
+    DOLLLAR         reduce using rule 22 (OPERATOR -> MOD .)
+    LCURLYBRACES    reduce using rule 22 (OPERATOR -> MOD .)
+    LBRACKET        reduce using rule 22 (OPERATOR -> MOD .)
+    EQUAL           reduce using rule 22 (OPERATOR -> MOD .)
+    PIPE            reduce using rule 22 (OPERATOR -> MOD .)
+    RPARANTHESIS    reduce using rule 22 (OPERATOR -> MOD .)
+    $end            reduce using rule 22 (OPERATOR -> MOD .)
+    COMMA           reduce using rule 22 (OPERATOR -> MOD .)
+    RBRACKET        reduce using rule 22 (OPERATOR -> MOD .)
+
+
+state 22
+
+    (23) OPERATOR -> CONCAT .
+
+    LPARANTHESIS    reduce using rule 23 (OPERATOR -> CONCAT .)
+    IDENTIFIER      reduce using rule 23 (OPERATOR -> CONCAT .)
+    INTEGER         reduce using rule 23 (OPERATOR -> CONCAT .)
+    FLOAT           reduce using rule 23 (OPERATOR -> CONCAT .)
+    STRING          reduce using rule 23 (OPERATOR -> CONCAT .)
+    BOOL            reduce using rule 23 (OPERATOR -> CONCAT .)
+    PLUS            reduce using rule 23 (OPERATOR -> CONCAT .)
+    MUL             reduce using rule 23 (OPERATOR -> CONCAT .)
+    DIV             reduce using rule 23 (OPERATOR -> CONCAT .)
+    MOD             reduce using rule 23 (OPERATOR -> CONCAT .)
+    CONCAT          reduce using rule 23 (OPERATOR -> CONCAT .)
+    AND             reduce using rule 23 (OPERATOR -> CONCAT .)
+    OR              reduce using rule 23 (OPERATOR -> CONCAT .)
+    GREATER_THAN    reduce using rule 23 (OPERATOR -> CONCAT .)
+    LESS_THAN       reduce using rule 23 (OPERATOR -> CONCAT .)
+    GREATER_OR_EQUAL_THAN reduce using rule 23 (OPERATOR -> CONCAT .)
+    LESS_OR_EQUAL_THAN reduce using rule 23 (OPERATOR -> CONCAT .)
+    EQUALITY        reduce using rule 23 (OPERATOR -> CONCAT .)
+    MINUS           reduce using rule 23 (OPERATOR -> CONCAT .)
+    INEQUALITY      reduce using rule 23 (OPERATOR -> CONCAT .)
+    DOLLLAR         reduce using rule 23 (OPERATOR -> CONCAT .)
+    LCURLYBRACES    reduce using rule 23 (OPERATOR -> CONCAT .)
+    LBRACKET        reduce using rule 23 (OPERATOR -> CONCAT .)
+    EQUAL           reduce using rule 23 (OPERATOR -> CONCAT .)
+    PIPE            reduce using rule 23 (OPERATOR -> CONCAT .)
+    RPARANTHESIS    reduce using rule 23 (OPERATOR -> CONCAT .)
+    $end            reduce using rule 23 (OPERATOR -> CONCAT .)
+    COMMA           reduce using rule 23 (OPERATOR -> CONCAT .)
+    RBRACKET        reduce using rule 23 (OPERATOR -> CONCAT .)
+
+
+state 23
+
+    (42) OPERATOR -> AND .
+
+    LPARANTHESIS    reduce using rule 42 (OPERATOR -> AND .)
+    IDENTIFIER      reduce using rule 42 (OPERATOR -> AND .)
+    INTEGER         reduce using rule 42 (OPERATOR -> AND .)
+    FLOAT           reduce using rule 42 (OPERATOR -> AND .)
+    STRING          reduce using rule 42 (OPERATOR -> AND .)
+    BOOL            reduce using rule 42 (OPERATOR -> AND .)
+    PLUS            reduce using rule 42 (OPERATOR -> AND .)
+    MUL             reduce using rule 42 (OPERATOR -> AND .)
+    DIV             reduce using rule 42 (OPERATOR -> AND .)
+    MOD             reduce using rule 42 (OPERATOR -> AND .)
+    CONCAT          reduce using rule 42 (OPERATOR -> AND .)
+    AND             reduce using rule 42 (OPERATOR -> AND .)
+    OR              reduce using rule 42 (OPERATOR -> AND .)
+    GREATER_THAN    reduce using rule 42 (OPERATOR -> AND .)
+    LESS_THAN       reduce using rule 42 (OPERATOR -> AND .)
+    GREATER_OR_EQUAL_THAN reduce using rule 42 (OPERATOR -> AND .)
+    LESS_OR_EQUAL_THAN reduce using rule 42 (OPERATOR -> AND .)
+    EQUALITY        reduce using rule 42 (OPERATOR -> AND .)
+    MINUS           reduce using rule 42 (OPERATOR -> AND .)
+    INEQUALITY      reduce using rule 42 (OPERATOR -> AND .)
+    DOLLLAR         reduce using rule 42 (OPERATOR -> AND .)
+    LCURLYBRACES    reduce using rule 42 (OPERATOR -> AND .)
+    LBRACKET        reduce using rule 42 (OPERATOR -> AND .)
+    EQUAL           reduce using rule 42 (OPERATOR -> AND .)
+    PIPE            reduce using rule 42 (OPERATOR -> AND .)
+    RPARANTHESIS    reduce using rule 42 (OPERATOR -> AND .)
+    $end            reduce using rule 42 (OPERATOR -> AND .)
+    COMMA           reduce using rule 42 (OPERATOR -> AND .)
+    RBRACKET        reduce using rule 42 (OPERATOR -> AND .)
+
+
+state 24
+
+    (43) OPERATOR -> OR .
+
+    LPARANTHESIS    reduce using rule 43 (OPERATOR -> OR .)
+    IDENTIFIER      reduce using rule 43 (OPERATOR -> OR .)
+    INTEGER         reduce using rule 43 (OPERATOR -> OR .)
+    FLOAT           reduce using rule 43 (OPERATOR -> OR .)
+    STRING          reduce using rule 43 (OPERATOR -> OR .)
+    BOOL            reduce using rule 43 (OPERATOR -> OR .)
+    PLUS            reduce using rule 43 (OPERATOR -> OR .)
+    MUL             reduce using rule 43 (OPERATOR -> OR .)
+    DIV             reduce using rule 43 (OPERATOR -> OR .)
+    MOD             reduce using rule 43 (OPERATOR -> OR .)
+    CONCAT          reduce using rule 43 (OPERATOR -> OR .)
+    AND             reduce using rule 43 (OPERATOR -> OR .)
+    OR              reduce using rule 43 (OPERATOR -> OR .)
+    GREATER_THAN    reduce using rule 43 (OPERATOR -> OR .)
+    LESS_THAN       reduce using rule 43 (OPERATOR -> OR .)
+    GREATER_OR_EQUAL_THAN reduce using rule 43 (OPERATOR -> OR .)
+    LESS_OR_EQUAL_THAN reduce using rule 43 (OPERATOR -> OR .)
+    EQUALITY        reduce using rule 43 (OPERATOR -> OR .)
+    MINUS           reduce using rule 43 (OPERATOR -> OR .)
+    INEQUALITY      reduce using rule 43 (OPERATOR -> OR .)
+    DOLLLAR         reduce using rule 43 (OPERATOR -> OR .)
+    LCURLYBRACES    reduce using rule 43 (OPERATOR -> OR .)
+    LBRACKET        reduce using rule 43 (OPERATOR -> OR .)
+    EQUAL           reduce using rule 43 (OPERATOR -> OR .)
+    PIPE            reduce using rule 43 (OPERATOR -> OR .)
+    RPARANTHESIS    reduce using rule 43 (OPERATOR -> OR .)
+    $end            reduce using rule 43 (OPERATOR -> OR .)
+    COMMA           reduce using rule 43 (OPERATOR -> OR .)
+    RBRACKET        reduce using rule 43 (OPERATOR -> OR .)
+
+
+state 25
+
+    (44) OPERATOR -> GREATER_THAN .
+
+    LPARANTHESIS    reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    IDENTIFIER      reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    INTEGER         reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    FLOAT           reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    STRING          reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    BOOL            reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    PLUS            reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    MUL             reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    DIV             reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    MOD             reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    CONCAT          reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    AND             reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    OR              reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    GREATER_THAN    reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    LESS_THAN       reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    GREATER_OR_EQUAL_THAN reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    LESS_OR_EQUAL_THAN reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    EQUALITY        reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    MINUS           reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    INEQUALITY      reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    DOLLLAR         reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    LCURLYBRACES    reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    LBRACKET        reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    EQUAL           reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    PIPE            reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    RPARANTHESIS    reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    $end            reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    COMMA           reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+    RBRACKET        reduce using rule 44 (OPERATOR -> GREATER_THAN .)
+
+
+state 26
+
+    (45) OPERATOR -> LESS_THAN .
+    (65) TYPE_CAST -> LESS_THAN . TYPE_LIST GREATER_THAN
+    (7) TYPE_LIST -> . TYPE
+    (8) TYPE_LIST -> . TYPE ARROW TYPE_LIST
+    (9) TYPE -> . IDENTIFIER
+    (10) TYPE -> . LBRACKET TYPE RBRACKET
+    (61) TYPE -> . LPARANTHESIS TYPE_LIST RPARANTHESIS
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for LBRACKET resolved as shift
+  ! shift/reduce conflict for LPARANTHESIS resolved as shift
+    INTEGER         reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    FLOAT           reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    STRING          reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    BOOL            reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    PLUS            reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    MUL             reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    DIV             reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    MOD             reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    CONCAT          reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    AND             reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    OR              reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    GREATER_THAN    reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    LESS_THAN       reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    GREATER_OR_EQUAL_THAN reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    LESS_OR_EQUAL_THAN reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    EQUALITY        reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    MINUS           reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    INEQUALITY      reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    DOLLLAR         reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    LCURLYBRACES    reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    EQUAL           reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    PIPE            reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    RPARANTHESIS    reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    $end            reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    COMMA           reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    RBRACKET        reduce using rule 45 (OPERATOR -> LESS_THAN .)
+    IDENTIFIER      shift and go to state 45
+    LBRACKET        shift and go to state 46
+    LPARANTHESIS    shift and go to state 47
+
+  ! LPARANTHESIS    [ reduce using rule 45 (OPERATOR -> LESS_THAN .) ]
+  ! IDENTIFIER      [ reduce using rule 45 (OPERATOR -> LESS_THAN .) ]
+  ! LBRACKET        [ reduce using rule 45 (OPERATOR -> LESS_THAN .) ]
+
+    TYPE_LIST                      shift and go to state 43
+    TYPE                           shift and go to state 44
+
+state 27
+
+    (46) OPERATOR -> GREATER_OR_EQUAL_THAN .
+
+    LPARANTHESIS    reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    IDENTIFIER      reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    INTEGER         reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    FLOAT           reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    STRING          reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    BOOL            reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    PLUS            reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    MUL             reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    DIV             reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    MOD             reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    CONCAT          reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    AND             reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    OR              reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    GREATER_THAN    reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    LESS_THAN       reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    GREATER_OR_EQUAL_THAN reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    LESS_OR_EQUAL_THAN reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    EQUALITY        reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    MINUS           reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    INEQUALITY      reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    DOLLLAR         reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    LCURLYBRACES    reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    LBRACKET        reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    EQUAL           reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    PIPE            reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    RPARANTHESIS    reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    $end            reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    COMMA           reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+    RBRACKET        reduce using rule 46 (OPERATOR -> GREATER_OR_EQUAL_THAN .)
+
+
+state 28
+
+    (47) OPERATOR -> LESS_OR_EQUAL_THAN .
+
+    LPARANTHESIS    reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    IDENTIFIER      reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    INTEGER         reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    FLOAT           reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    STRING          reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    BOOL            reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    PLUS            reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    MUL             reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    DIV             reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    MOD             reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    CONCAT          reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    AND             reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    OR              reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    GREATER_THAN    reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    LESS_THAN       reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    GREATER_OR_EQUAL_THAN reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    LESS_OR_EQUAL_THAN reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    EQUALITY        reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    MINUS           reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    INEQUALITY      reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    DOLLLAR         reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    LCURLYBRACES    reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    LBRACKET        reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    EQUAL           reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    PIPE            reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    RPARANTHESIS    reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    $end            reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    COMMA           reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+    RBRACKET        reduce using rule 47 (OPERATOR -> LESS_OR_EQUAL_THAN .)
+
+
+state 29
+
+    (48) OPERATOR -> EQUALITY .
+
+    LPARANTHESIS    reduce using rule 48 (OPERATOR -> EQUALITY .)
+    IDENTIFIER      reduce using rule 48 (OPERATOR -> EQUALITY .)
+    INTEGER         reduce using rule 48 (OPERATOR -> EQUALITY .)
+    FLOAT           reduce using rule 48 (OPERATOR -> EQUALITY .)
+    STRING          reduce using rule 48 (OPERATOR -> EQUALITY .)
+    BOOL            reduce using rule 48 (OPERATOR -> EQUALITY .)
+    PLUS            reduce using rule 48 (OPERATOR -> EQUALITY .)
+    MUL             reduce using rule 48 (OPERATOR -> EQUALITY .)
+    DIV             reduce using rule 48 (OPERATOR -> EQUALITY .)
+    MOD             reduce using rule 48 (OPERATOR -> EQUALITY .)
+    CONCAT          reduce using rule 48 (OPERATOR -> EQUALITY .)
+    AND             reduce using rule 48 (OPERATOR -> EQUALITY .)
+    OR              reduce using rule 48 (OPERATOR -> EQUALITY .)
+    GREATER_THAN    reduce using rule 48 (OPERATOR -> EQUALITY .)
+    LESS_THAN       reduce using rule 48 (OPERATOR -> EQUALITY .)
+    GREATER_OR_EQUAL_THAN reduce using rule 48 (OPERATOR -> EQUALITY .)
+    LESS_OR_EQUAL_THAN reduce using rule 48 (OPERATOR -> EQUALITY .)
+    EQUALITY        reduce using rule 48 (OPERATOR -> EQUALITY .)
+    MINUS           reduce using rule 48 (OPERATOR -> EQUALITY .)
+    INEQUALITY      reduce using rule 48 (OPERATOR -> EQUALITY .)
+    DOLLLAR         reduce using rule 48 (OPERATOR -> EQUALITY .)
+    LCURLYBRACES    reduce using rule 48 (OPERATOR -> EQUALITY .)
+    LBRACKET        reduce using rule 48 (OPERATOR -> EQUALITY .)
+    EQUAL           reduce using rule 48 (OPERATOR -> EQUALITY .)
+    PIPE            reduce using rule 48 (OPERATOR -> EQUALITY .)
+    RPARANTHESIS    reduce using rule 48 (OPERATOR -> EQUALITY .)
+    $end            reduce using rule 48 (OPERATOR -> EQUALITY .)
+    COMMA           reduce using rule 48 (OPERATOR -> EQUALITY .)
+    RBRACKET        reduce using rule 48 (OPERATOR -> EQUALITY .)
+
+
+state 30
+
+    (49) OPERATOR -> MINUS .
+
+    LPARANTHESIS    reduce using rule 49 (OPERATOR -> MINUS .)
+    IDENTIFIER      reduce using rule 49 (OPERATOR -> MINUS .)
+    INTEGER         reduce using rule 49 (OPERATOR -> MINUS .)
+    FLOAT           reduce using rule 49 (OPERATOR -> MINUS .)
+    STRING          reduce using rule 49 (OPERATOR -> MINUS .)
+    BOOL            reduce using rule 49 (OPERATOR -> MINUS .)
+    PLUS            reduce using rule 49 (OPERATOR -> MINUS .)
+    MUL             reduce using rule 49 (OPERATOR -> MINUS .)
+    DIV             reduce using rule 49 (OPERATOR -> MINUS .)
+    MOD             reduce using rule 49 (OPERATOR -> MINUS .)
+    CONCAT          reduce using rule 49 (OPERATOR -> MINUS .)
+    AND             reduce using rule 49 (OPERATOR -> MINUS .)
+    OR              reduce using rule 49 (OPERATOR -> MINUS .)
+    GREATER_THAN    reduce using rule 49 (OPERATOR -> MINUS .)
+    LESS_THAN       reduce using rule 49 (OPERATOR -> MINUS .)
+    GREATER_OR_EQUAL_THAN reduce using rule 49 (OPERATOR -> MINUS .)
+    LESS_OR_EQUAL_THAN reduce using rule 49 (OPERATOR -> MINUS .)
+    EQUALITY        reduce using rule 49 (OPERATOR -> MINUS .)
+    MINUS           reduce using rule 49 (OPERATOR -> MINUS .)
+    INEQUALITY      reduce using rule 49 (OPERATOR -> MINUS .)
+    DOLLLAR         reduce using rule 49 (OPERATOR -> MINUS .)
+    LCURLYBRACES    reduce using rule 49 (OPERATOR -> MINUS .)
+    LBRACKET        reduce using rule 49 (OPERATOR -> MINUS .)
+    EQUAL           reduce using rule 49 (OPERATOR -> MINUS .)
+    PIPE            reduce using rule 49 (OPERATOR -> MINUS .)
+    RPARANTHESIS    reduce using rule 49 (OPERATOR -> MINUS .)
+    $end            reduce using rule 49 (OPERATOR -> MINUS .)
+    COMMA           reduce using rule 49 (OPERATOR -> MINUS .)
+    RBRACKET        reduce using rule 49 (OPERATOR -> MINUS .)
+
+
+state 31
+
+    (62) OPERATOR -> INEQUALITY .
+
+    LPARANTHESIS    reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    IDENTIFIER      reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    INTEGER         reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    FLOAT           reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    STRING          reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    BOOL            reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    PLUS            reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    MUL             reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    DIV             reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    MOD             reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    CONCAT          reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    AND             reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    OR              reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    GREATER_THAN    reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    LESS_THAN       reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    GREATER_OR_EQUAL_THAN reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    LESS_OR_EQUAL_THAN reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    EQUALITY        reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    MINUS           reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    INEQUALITY      reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    DOLLLAR         reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    LCURLYBRACES    reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    LBRACKET        reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    EQUAL           reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    PIPE            reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    RPARANTHESIS    reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    $end            reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    COMMA           reduce using rule 62 (OPERATOR -> INEQUALITY .)
+    RBRACKET        reduce using rule 62 (OPERATOR -> INEQUALITY .)
+
+
+state 32
+
+    (37) ENV_VAR -> DOLLLAR . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 48
+
+
+state 33
+
+    (31) JSON -> LCURLYBRACES . JSON_KV_LIST RCURLYBRACES
+    (32) JSON_KV_LIST -> . JSON_KV
+    (52) JSON_KV_LIST -> . JSON_KV COMMA JSON_KV_LIST
+    (33) JSON_KV -> . IDENTIFIER DOTS JSON
+    (38) JSON_KV -> . IDENTIFIER DOTS JSON_VALUE_LIST
+    (58) JSON_KV -> . IDENTIFIER DOTS JSON_VALUE
+
+    IDENTIFIER      shift and go to state 51
+
+    JSON_KV_LIST                   shift and go to state 49
+    JSON_KV                        shift and go to state 50
+
+state 34
+
+    (30) VALUE_LIST -> LBRACKET . RBRACKET
+    (66) VALUE_LIST -> LBRACKET . EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    RBRACKET        shift and go to state 52
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION_ELEM                shift and go to state 53
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 35
+
+    (6) TYPE_DECLARATION -> IDENTIFIER DOUBLE_DOTS . TYPE_LIST
+    (7) TYPE_LIST -> . TYPE
+    (8) TYPE_LIST -> . TYPE ARROW TYPE_LIST
+    (9) TYPE -> . IDENTIFIER
+    (10) TYPE -> . LBRACKET TYPE RBRACKET
+    (61) TYPE -> . LPARANTHESIS TYPE_LIST RPARANTHESIS
+
+    IDENTIFIER      shift and go to state 45
+    LBRACKET        shift and go to state 46
+    LPARANTHESIS    shift and go to state 47
+
+    TYPE_LIST                      shift and go to state 54
+    TYPE                           shift and go to state 44
+
+state 36
+
+    (4) FUNCTION_DEFINITIONS -> EXPRESSION EQUAL . EXPRESSION
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION                     shift and go to state 55
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 37
+
+    (5) FUNCTION_DEFINITIONS -> EXPRESSION CASE_LIST .
+
+    $end            reduce using rule 5 (FUNCTION_DEFINITIONS -> EXPRESSION CASE_LIST .)
+
+
+state 38
+
+    (11) CASE_LIST -> CASE .
+    (12) CASE_LIST -> CASE . CASE_LIST
+    (11) CASE_LIST -> . CASE
+    (12) CASE_LIST -> . CASE CASE_LIST
+    (13) CASE -> . PIPE EXPRESSION EQUAL EXPRESSION
+
+    $end            reduce using rule 11 (CASE_LIST -> CASE .)
+    PIPE            shift and go to state 39
+
+    CASE                           shift and go to state 38
+    CASE_LIST                      shift and go to state 56
+
+state 39
+
+    (13) CASE -> PIPE . EXPRESSION EQUAL EXPRESSION
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION                     shift and go to state 57
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 40
+
+    (14) EXPRESSION -> EXPRESSION_ELEM EXPRESSION .
+
+    EQUAL           reduce using rule 14 (EXPRESSION -> EXPRESSION_ELEM EXPRESSION .)
+    PIPE            reduce using rule 14 (EXPRESSION -> EXPRESSION_ELEM EXPRESSION .)
+    RPARANTHESIS    reduce using rule 14 (EXPRESSION -> EXPRESSION_ELEM EXPRESSION .)
+    $end            reduce using rule 14 (EXPRESSION -> EXPRESSION_ELEM EXPRESSION .)
+
+
+state 41
+
+    (24) VALUE -> IDENTIFIER .
+
+    LPARANTHESIS    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 24 (VALUE -> IDENTIFIER .)
+    INTEGER         reduce using rule 24 (VALUE -> IDENTIFIER .)
+    FLOAT           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    STRING          reduce using rule 24 (VALUE -> IDENTIFIER .)
+    BOOL            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    PLUS            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MUL             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    DIV             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MOD             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    CONCAT          reduce using rule 24 (VALUE -> IDENTIFIER .)
+    AND             reduce using rule 24 (VALUE -> IDENTIFIER .)
+    OR              reduce using rule 24 (VALUE -> IDENTIFIER .)
+    GREATER_THAN    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LESS_THAN       reduce using rule 24 (VALUE -> IDENTIFIER .)
+    GREATER_OR_EQUAL_THAN reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LESS_OR_EQUAL_THAN reduce using rule 24 (VALUE -> IDENTIFIER .)
+    EQUALITY        reduce using rule 24 (VALUE -> IDENTIFIER .)
+    MINUS           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    INEQUALITY      reduce using rule 24 (VALUE -> IDENTIFIER .)
+    DOLLLAR         reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LCURLYBRACES    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    LBRACKET        reduce using rule 24 (VALUE -> IDENTIFIER .)
+    EQUAL           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    PIPE            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    RPARANTHESIS    reduce using rule 24 (VALUE -> IDENTIFIER .)
+    $end            reduce using rule 24 (VALUE -> IDENTIFIER .)
+    COMMA           reduce using rule 24 (VALUE -> IDENTIFIER .)
+    RBRACKET        reduce using rule 24 (VALUE -> IDENTIFIER .)
+
+
+state 42
+
+    (16) EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION . RPARANTHESIS
+
+    RPARANTHESIS    shift and go to state 58
+
+
+state 43
+
+    (65) TYPE_CAST -> LESS_THAN TYPE_LIST . GREATER_THAN
+
+    GREATER_THAN    shift and go to state 59
+
+
+state 44
+
+    (7) TYPE_LIST -> TYPE .
+    (8) TYPE_LIST -> TYPE . ARROW TYPE_LIST
+
+    GREATER_THAN    reduce using rule 7 (TYPE_LIST -> TYPE .)
+    $end            reduce using rule 7 (TYPE_LIST -> TYPE .)
+    RPARANTHESIS    reduce using rule 7 (TYPE_LIST -> TYPE .)
+    ARROW           shift and go to state 60
+
+
+state 45
+
+    (9) TYPE -> IDENTIFIER .
+
+    ARROW           reduce using rule 9 (TYPE -> IDENTIFIER .)
+    GREATER_THAN    reduce using rule 9 (TYPE -> IDENTIFIER .)
+    $end            reduce using rule 9 (TYPE -> IDENTIFIER .)
+    RBRACKET        reduce using rule 9 (TYPE -> IDENTIFIER .)
+    RPARANTHESIS    reduce using rule 9 (TYPE -> IDENTIFIER .)
+
+
+state 46
+
+    (10) TYPE -> LBRACKET . TYPE RBRACKET
+    (9) TYPE -> . IDENTIFIER
+    (10) TYPE -> . LBRACKET TYPE RBRACKET
+    (61) TYPE -> . LPARANTHESIS TYPE_LIST RPARANTHESIS
+
+    IDENTIFIER      shift and go to state 45
+    LBRACKET        shift and go to state 46
+    LPARANTHESIS    shift and go to state 47
+
+    TYPE                           shift and go to state 61
+
+state 47
+
+    (61) TYPE -> LPARANTHESIS . TYPE_LIST RPARANTHESIS
+    (7) TYPE_LIST -> . TYPE
+    (8) TYPE_LIST -> . TYPE ARROW TYPE_LIST
+    (9) TYPE -> . IDENTIFIER
+    (10) TYPE -> . LBRACKET TYPE RBRACKET
+    (61) TYPE -> . LPARANTHESIS TYPE_LIST RPARANTHESIS
+
+    IDENTIFIER      shift and go to state 45
+    LBRACKET        shift and go to state 46
+    LPARANTHESIS    shift and go to state 47
+
+    TYPE_LIST                      shift and go to state 62
+    TYPE                           shift and go to state 44
+
+state 48
+
+    (37) ENV_VAR -> DOLLLAR IDENTIFIER .
+
+    LPARANTHESIS    reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    IDENTIFIER      reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    INTEGER         reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    FLOAT           reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    STRING          reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    BOOL            reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    PLUS            reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    MUL             reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    DIV             reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    MOD             reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    CONCAT          reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    AND             reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    OR              reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    GREATER_THAN    reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    LESS_THAN       reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    GREATER_OR_EQUAL_THAN reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    LESS_OR_EQUAL_THAN reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    EQUALITY        reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    MINUS           reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    INEQUALITY      reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    DOLLLAR         reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    LCURLYBRACES    reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    LBRACKET        reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    EQUAL           reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    PIPE            reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    RPARANTHESIS    reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    $end            reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    COMMA           reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    RBRACKET        reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+    RCURLYBRACES    reduce using rule 37 (ENV_VAR -> DOLLLAR IDENTIFIER .)
+
+
+state 49
+
+    (31) JSON -> LCURLYBRACES JSON_KV_LIST . RCURLYBRACES
+
+    RCURLYBRACES    shift and go to state 63
+
+
+state 50
+
+    (32) JSON_KV_LIST -> JSON_KV .
+    (52) JSON_KV_LIST -> JSON_KV . COMMA JSON_KV_LIST
+
+    RCURLYBRACES    reduce using rule 32 (JSON_KV_LIST -> JSON_KV .)
+    COMMA           shift and go to state 64
+
+
+state 51
+
+    (33) JSON_KV -> IDENTIFIER . DOTS JSON
+    (38) JSON_KV -> IDENTIFIER . DOTS JSON_VALUE_LIST
+    (58) JSON_KV -> IDENTIFIER . DOTS JSON_VALUE
+
+    DOTS            shift and go to state 65
+
+
+state 52
+
+    (30) VALUE_LIST -> LBRACKET RBRACKET .
+
+    LPARANTHESIS    reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    IDENTIFIER      reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    INTEGER         reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    FLOAT           reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    STRING          reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    BOOL            reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    PLUS            reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    MUL             reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    DIV             reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    MOD             reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    CONCAT          reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    AND             reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    OR              reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    GREATER_THAN    reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    LESS_THAN       reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    GREATER_OR_EQUAL_THAN reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    LESS_OR_EQUAL_THAN reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    EQUALITY        reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    MINUS           reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    INEQUALITY      reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    DOLLLAR         reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    LCURLYBRACES    reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    LBRACKET        reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    EQUAL           reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    PIPE            reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    RPARANTHESIS    reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    $end            reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    COMMA           reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+    RBRACKET        reduce using rule 30 (VALUE_LIST -> LBRACKET RBRACKET .)
+
+
+state 53
+
+    (66) VALUE_LIST -> LBRACKET EXPRESSION_ELEM . VALUE_LIST_R RBRACKET
+    (40) VALUE_LIST_R -> .
+    (67) VALUE_LIST_R -> . COMMA EXPRESSION_ELEM VALUE_LIST_R
+
+    RBRACKET        reduce using rule 40 (VALUE_LIST_R -> .)
+    COMMA           shift and go to state 67
+
+    VALUE_LIST_R                   shift and go to state 66
+
+state 54
+
+    (6) TYPE_DECLARATION -> IDENTIFIER DOUBLE_DOTS TYPE_LIST .
+
+    $end            reduce using rule 6 (TYPE_DECLARATION -> IDENTIFIER DOUBLE_DOTS TYPE_LIST .)
+
+
+state 55
+
+    (4) FUNCTION_DEFINITIONS -> EXPRESSION EQUAL EXPRESSION .
+
+    $end            reduce using rule 4 (FUNCTION_DEFINITIONS -> EXPRESSION EQUAL EXPRESSION .)
+
+
+state 56
+
+    (12) CASE_LIST -> CASE CASE_LIST .
+
+    $end            reduce using rule 12 (CASE_LIST -> CASE CASE_LIST .)
+
+
+state 57
+
+    (13) CASE -> PIPE EXPRESSION . EQUAL EXPRESSION
+
+    EQUAL           shift and go to state 68
+
+
+state 58
+
+    (16) EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .
+
+    LPARANTHESIS    reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    IDENTIFIER      reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    INTEGER         reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    FLOAT           reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    STRING          reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    BOOL            reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    PLUS            reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    MUL             reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    DIV             reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    MOD             reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    CONCAT          reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    AND             reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    OR              reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    GREATER_THAN    reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    LESS_THAN       reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    GREATER_OR_EQUAL_THAN reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    LESS_OR_EQUAL_THAN reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    EQUALITY        reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    MINUS           reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    INEQUALITY      reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    DOLLLAR         reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    LCURLYBRACES    reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    LBRACKET        reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    EQUAL           reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    PIPE            reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    RPARANTHESIS    reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    $end            reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    COMMA           reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    RBRACKET        reduce using rule 16 (EXPRESSION_ELEM -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+
+
+state 59
+
+    (65) TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .
+
+    LPARANTHESIS    reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    IDENTIFIER      reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    INTEGER         reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    FLOAT           reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    STRING          reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    BOOL            reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    PLUS            reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    MUL             reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    DIV             reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    MOD             reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    CONCAT          reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    AND             reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    OR              reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    GREATER_THAN    reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    LESS_THAN       reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    GREATER_OR_EQUAL_THAN reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    LESS_OR_EQUAL_THAN reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    EQUALITY        reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    MINUS           reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    INEQUALITY      reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    DOLLLAR         reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    LCURLYBRACES    reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    LBRACKET        reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    EQUAL           reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    PIPE            reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    RPARANTHESIS    reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    $end            reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    COMMA           reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+    RBRACKET        reduce using rule 65 (TYPE_CAST -> LESS_THAN TYPE_LIST GREATER_THAN .)
+
+
+state 60
+
+    (8) TYPE_LIST -> TYPE ARROW . TYPE_LIST
+    (7) TYPE_LIST -> . TYPE
+    (8) TYPE_LIST -> . TYPE ARROW TYPE_LIST
+    (9) TYPE -> . IDENTIFIER
+    (10) TYPE -> . LBRACKET TYPE RBRACKET
+    (61) TYPE -> . LPARANTHESIS TYPE_LIST RPARANTHESIS
+
+    IDENTIFIER      shift and go to state 45
+    LBRACKET        shift and go to state 46
+    LPARANTHESIS    shift and go to state 47
+
+    TYPE                           shift and go to state 44
+    TYPE_LIST                      shift and go to state 69
+
+state 61
+
+    (10) TYPE -> LBRACKET TYPE . RBRACKET
+
+    RBRACKET        shift and go to state 70
+
+
+state 62
+
+    (61) TYPE -> LPARANTHESIS TYPE_LIST . RPARANTHESIS
+
+    RPARANTHESIS    shift and go to state 71
+
+
+state 63
+
+    (31) JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .
+
+    LPARANTHESIS    reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    IDENTIFIER      reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    INTEGER         reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    FLOAT           reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    STRING          reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    BOOL            reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    PLUS            reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    MUL             reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    DIV             reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    MOD             reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    CONCAT          reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    AND             reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    OR              reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    GREATER_THAN    reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    LESS_THAN       reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    GREATER_OR_EQUAL_THAN reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    LESS_OR_EQUAL_THAN reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    EQUALITY        reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    MINUS           reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    INEQUALITY      reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    DOLLLAR         reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    LCURLYBRACES    reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    LBRACKET        reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    EQUAL           reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    PIPE            reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    RPARANTHESIS    reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    $end            reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    COMMA           reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    RBRACKET        reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+    RCURLYBRACES    reduce using rule 31 (JSON -> LCURLYBRACES JSON_KV_LIST RCURLYBRACES .)
+
+
+state 64
+
+    (52) JSON_KV_LIST -> JSON_KV COMMA . JSON_KV_LIST
+    (32) JSON_KV_LIST -> . JSON_KV
+    (52) JSON_KV_LIST -> . JSON_KV COMMA JSON_KV_LIST
+    (33) JSON_KV -> . IDENTIFIER DOTS JSON
+    (38) JSON_KV -> . IDENTIFIER DOTS JSON_VALUE_LIST
+    (58) JSON_KV -> . IDENTIFIER DOTS JSON_VALUE
+
+    IDENTIFIER      shift and go to state 51
+
+    JSON_KV                        shift and go to state 50
+    JSON_KV_LIST                   shift and go to state 72
+
+state 65
+
+    (33) JSON_KV -> IDENTIFIER DOTS . JSON
+    (38) JSON_KV -> IDENTIFIER DOTS . JSON_VALUE_LIST
+    (58) JSON_KV -> IDENTIFIER DOTS . JSON_VALUE
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (34) JSON_VALUE_LIST -> . LBRACKET RBRACKET
+    (51) JSON_VALUE_LIST -> . LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET
+    (35) JSON_VALUE -> . JSON_VALUE_LIST
+    (36) JSON_VALUE -> . JSON
+    (53) JSON_VALUE -> . IDENTIFIER
+    (54) JSON_VALUE -> . INTEGER
+    (55) JSON_VALUE -> . FLOAT
+    (56) JSON_VALUE -> . STRING
+    (57) JSON_VALUE -> . ENV_VAR
+    (60) JSON_VALUE -> . BOOL
+    (63) JSON_VALUE -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 77
+    IDENTIFIER      shift and go to state 73
+    INTEGER         shift and go to state 78
+    FLOAT           shift and go to state 79
+    STRING          shift and go to state 80
+    BOOL            shift and go to state 82
+    LPARANTHESIS    shift and go to state 83
+    DOLLLAR         shift and go to state 32
+
+    JSON                           shift and go to state 74
+    JSON_VALUE_LIST                shift and go to state 75
+    JSON_VALUE                     shift and go to state 76
+    ENV_VAR                        shift and go to state 81
+
+state 66
+
+    (66) VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R . RBRACKET
+
+    RBRACKET        shift and go to state 84
+
+
+state 67
+
+    (67) VALUE_LIST_R -> COMMA . EXPRESSION_ELEM VALUE_LIST_R
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION_ELEM                shift and go to state 85
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 68
+
+    (13) CASE -> PIPE EXPRESSION EQUAL . EXPRESSION
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION                     shift and go to state 86
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 69
+
+    (8) TYPE_LIST -> TYPE ARROW TYPE_LIST .
+
+    GREATER_THAN    reduce using rule 8 (TYPE_LIST -> TYPE ARROW TYPE_LIST .)
+    $end            reduce using rule 8 (TYPE_LIST -> TYPE ARROW TYPE_LIST .)
+    RPARANTHESIS    reduce using rule 8 (TYPE_LIST -> TYPE ARROW TYPE_LIST .)
+
+
+state 70
+
+    (10) TYPE -> LBRACKET TYPE RBRACKET .
+
+    ARROW           reduce using rule 10 (TYPE -> LBRACKET TYPE RBRACKET .)
+    GREATER_THAN    reduce using rule 10 (TYPE -> LBRACKET TYPE RBRACKET .)
+    $end            reduce using rule 10 (TYPE -> LBRACKET TYPE RBRACKET .)
+    RBRACKET        reduce using rule 10 (TYPE -> LBRACKET TYPE RBRACKET .)
+    RPARANTHESIS    reduce using rule 10 (TYPE -> LBRACKET TYPE RBRACKET .)
+
+
+state 71
+
+    (61) TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .
+
+    ARROW           reduce using rule 61 (TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .)
+    GREATER_THAN    reduce using rule 61 (TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .)
+    $end            reduce using rule 61 (TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .)
+    RBRACKET        reduce using rule 61 (TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .)
+    RPARANTHESIS    reduce using rule 61 (TYPE -> LPARANTHESIS TYPE_LIST RPARANTHESIS .)
+
+
+state 72
+
+    (52) JSON_KV_LIST -> JSON_KV COMMA JSON_KV_LIST .
+
+    RCURLYBRACES    reduce using rule 52 (JSON_KV_LIST -> JSON_KV COMMA JSON_KV_LIST .)
+
+
+state 73
+
+    (53) JSON_VALUE -> IDENTIFIER .
+
+    COMMA           reduce using rule 53 (JSON_VALUE -> IDENTIFIER .)
+    RCURLYBRACES    reduce using rule 53 (JSON_VALUE -> IDENTIFIER .)
+    RBRACKET        reduce using rule 53 (JSON_VALUE -> IDENTIFIER .)
+
+
+state 74
+
+    (33) JSON_KV -> IDENTIFIER DOTS JSON .
+    (36) JSON_VALUE -> JSON .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 33 (JSON_KV -> IDENTIFIER DOTS JSON .)
+  ! reduce/reduce conflict for RCURLYBRACES resolved using rule 33 (JSON_KV -> IDENTIFIER DOTS JSON .)
+    COMMA           reduce using rule 33 (JSON_KV -> IDENTIFIER DOTS JSON .)
+    RCURLYBRACES    reduce using rule 33 (JSON_KV -> IDENTIFIER DOTS JSON .)
+
+  ! COMMA           [ reduce using rule 36 (JSON_VALUE -> JSON .) ]
+  ! RCURLYBRACES    [ reduce using rule 36 (JSON_VALUE -> JSON .) ]
+
+
+state 75
+
+    (38) JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST .
+    (35) JSON_VALUE -> JSON_VALUE_LIST .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+  ! reduce/reduce conflict for RCURLYBRACES resolved using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+    COMMA           reduce using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+    RCURLYBRACES    reduce using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+
+  ! COMMA           [ reduce using rule 38 (JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST .) ]
+  ! RCURLYBRACES    [ reduce using rule 38 (JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST .) ]
+
+
+state 76
+
+    (58) JSON_KV -> IDENTIFIER DOTS JSON_VALUE .
+
+    COMMA           reduce using rule 58 (JSON_KV -> IDENTIFIER DOTS JSON_VALUE .)
+    RCURLYBRACES    reduce using rule 58 (JSON_KV -> IDENTIFIER DOTS JSON_VALUE .)
+
+
+state 77
+
+    (34) JSON_VALUE_LIST -> LBRACKET . RBRACKET
+    (51) JSON_VALUE_LIST -> LBRACKET . JSON_VALUE JSON_VALUE_LIST_R RBRACKET
+    (35) JSON_VALUE -> . JSON_VALUE_LIST
+    (36) JSON_VALUE -> . JSON
+    (53) JSON_VALUE -> . IDENTIFIER
+    (54) JSON_VALUE -> . INTEGER
+    (55) JSON_VALUE -> . FLOAT
+    (56) JSON_VALUE -> . STRING
+    (57) JSON_VALUE -> . ENV_VAR
+    (60) JSON_VALUE -> . BOOL
+    (63) JSON_VALUE -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (34) JSON_VALUE_LIST -> . LBRACKET RBRACKET
+    (51) JSON_VALUE_LIST -> . LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+
+    RBRACKET        shift and go to state 87
+    IDENTIFIER      shift and go to state 73
+    INTEGER         shift and go to state 78
+    FLOAT           shift and go to state 79
+    STRING          shift and go to state 80
+    BOOL            shift and go to state 82
+    LPARANTHESIS    shift and go to state 83
+    LBRACKET        shift and go to state 77
+    LCURLYBRACES    shift and go to state 33
+    DOLLLAR         shift and go to state 32
+
+    JSON_VALUE                     shift and go to state 88
+    JSON_VALUE_LIST                shift and go to state 89
+    JSON                           shift and go to state 90
+    ENV_VAR                        shift and go to state 81
+
+state 78
+
+    (54) JSON_VALUE -> INTEGER .
+
+    COMMA           reduce using rule 54 (JSON_VALUE -> INTEGER .)
+    RCURLYBRACES    reduce using rule 54 (JSON_VALUE -> INTEGER .)
+    RBRACKET        reduce using rule 54 (JSON_VALUE -> INTEGER .)
+
+
+state 79
+
+    (55) JSON_VALUE -> FLOAT .
+
+    COMMA           reduce using rule 55 (JSON_VALUE -> FLOAT .)
+    RCURLYBRACES    reduce using rule 55 (JSON_VALUE -> FLOAT .)
+    RBRACKET        reduce using rule 55 (JSON_VALUE -> FLOAT .)
+
+
+state 80
+
+    (56) JSON_VALUE -> STRING .
+
+    COMMA           reduce using rule 56 (JSON_VALUE -> STRING .)
+    RCURLYBRACES    reduce using rule 56 (JSON_VALUE -> STRING .)
+    RBRACKET        reduce using rule 56 (JSON_VALUE -> STRING .)
+
+
+state 81
+
+    (57) JSON_VALUE -> ENV_VAR .
+
+    COMMA           reduce using rule 57 (JSON_VALUE -> ENV_VAR .)
+    RCURLYBRACES    reduce using rule 57 (JSON_VALUE -> ENV_VAR .)
+    RBRACKET        reduce using rule 57 (JSON_VALUE -> ENV_VAR .)
+
+
+state 82
+
+    (60) JSON_VALUE -> BOOL .
+
+    COMMA           reduce using rule 60 (JSON_VALUE -> BOOL .)
+    RCURLYBRACES    reduce using rule 60 (JSON_VALUE -> BOOL .)
+    RBRACKET        reduce using rule 60 (JSON_VALUE -> BOOL .)
+
+
+state 83
+
+    (63) JSON_VALUE -> LPARANTHESIS . EXPRESSION RPARANTHESIS
+    (14) EXPRESSION -> . EXPRESSION_ELEM EXPRESSION
+    (15) EXPRESSION -> . EXPRESSION_ELEM
+    (16) EXPRESSION_ELEM -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (17) EXPRESSION_ELEM -> . VALUE
+    (18) EXPRESSION_ELEM -> . OPERATOR
+    (24) VALUE -> . IDENTIFIER
+    (25) VALUE -> . INTEGER
+    (26) VALUE -> . FLOAT
+    (27) VALUE -> . STRING
+    (28) VALUE -> . ENV_VAR
+    (29) VALUE -> . JSON
+    (39) VALUE -> . VALUE_LIST
+    (59) VALUE -> . BOOL
+    (64) VALUE -> . TYPE_CAST
+    (19) OPERATOR -> . PLUS
+    (20) OPERATOR -> . MUL
+    (21) OPERATOR -> . DIV
+    (22) OPERATOR -> . MOD
+    (23) OPERATOR -> . CONCAT
+    (42) OPERATOR -> . AND
+    (43) OPERATOR -> . OR
+    (44) OPERATOR -> . GREATER_THAN
+    (45) OPERATOR -> . LESS_THAN
+    (46) OPERATOR -> . GREATER_OR_EQUAL_THAN
+    (47) OPERATOR -> . LESS_OR_EQUAL_THAN
+    (48) OPERATOR -> . EQUALITY
+    (49) OPERATOR -> . MINUS
+    (62) OPERATOR -> . INEQUALITY
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (30) VALUE_LIST -> . LBRACKET RBRACKET
+    (66) VALUE_LIST -> . LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET
+    (65) TYPE_CAST -> . LESS_THAN TYPE_LIST GREATER_THAN
+
+    LPARANTHESIS    shift and go to state 7
+    IDENTIFIER      shift and go to state 41
+    INTEGER         shift and go to state 10
+    FLOAT           shift and go to state 11
+    STRING          shift and go to state 12
+    BOOL            shift and go to state 16
+    PLUS            shift and go to state 18
+    MUL             shift and go to state 19
+    DIV             shift and go to state 20
+    MOD             shift and go to state 21
+    CONCAT          shift and go to state 22
+    AND             shift and go to state 23
+    OR              shift and go to state 24
+    GREATER_THAN    shift and go to state 25
+    LESS_THAN       shift and go to state 26
+    GREATER_OR_EQUAL_THAN shift and go to state 27
+    LESS_OR_EQUAL_THAN shift and go to state 28
+    EQUALITY        shift and go to state 29
+    MINUS           shift and go to state 30
+    INEQUALITY      shift and go to state 31
+    DOLLLAR         shift and go to state 32
+    LCURLYBRACES    shift and go to state 33
+    LBRACKET        shift and go to state 34
+
+    EXPRESSION                     shift and go to state 91
+    EXPRESSION_ELEM                shift and go to state 6
+    VALUE                          shift and go to state 8
+    OPERATOR                       shift and go to state 9
+    ENV_VAR                        shift and go to state 13
+    JSON                           shift and go to state 14
+    VALUE_LIST                     shift and go to state 15
+    TYPE_CAST                      shift and go to state 17
+
+state 84
+
+    (66) VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .
+
+    LPARANTHESIS    reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    IDENTIFIER      reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    INTEGER         reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    FLOAT           reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    STRING          reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    BOOL            reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    PLUS            reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    MUL             reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    DIV             reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    MOD             reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    CONCAT          reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    AND             reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    OR              reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    GREATER_THAN    reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    LESS_THAN       reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    GREATER_OR_EQUAL_THAN reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    LESS_OR_EQUAL_THAN reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    EQUALITY        reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    MINUS           reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    INEQUALITY      reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    DOLLLAR         reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    LCURLYBRACES    reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    LBRACKET        reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    EQUAL           reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    PIPE            reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    RPARANTHESIS    reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    $end            reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    COMMA           reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+    RBRACKET        reduce using rule 66 (VALUE_LIST -> LBRACKET EXPRESSION_ELEM VALUE_LIST_R RBRACKET .)
+
+
+state 85
+
+    (67) VALUE_LIST_R -> COMMA EXPRESSION_ELEM . VALUE_LIST_R
+    (40) VALUE_LIST_R -> .
+    (67) VALUE_LIST_R -> . COMMA EXPRESSION_ELEM VALUE_LIST_R
+
+    RBRACKET        reduce using rule 40 (VALUE_LIST_R -> .)
+    COMMA           shift and go to state 67
+
+    VALUE_LIST_R                   shift and go to state 92
+
+state 86
+
+    (13) CASE -> PIPE EXPRESSION EQUAL EXPRESSION .
+
+    PIPE            reduce using rule 13 (CASE -> PIPE EXPRESSION EQUAL EXPRESSION .)
+    $end            reduce using rule 13 (CASE -> PIPE EXPRESSION EQUAL EXPRESSION .)
+
+
+state 87
+
+    (34) JSON_VALUE_LIST -> LBRACKET RBRACKET .
+
+    COMMA           reduce using rule 34 (JSON_VALUE_LIST -> LBRACKET RBRACKET .)
+    RCURLYBRACES    reduce using rule 34 (JSON_VALUE_LIST -> LBRACKET RBRACKET .)
+    RBRACKET        reduce using rule 34 (JSON_VALUE_LIST -> LBRACKET RBRACKET .)
+
+
+state 88
+
+    (51) JSON_VALUE_LIST -> LBRACKET JSON_VALUE . JSON_VALUE_LIST_R RBRACKET
+    (41) JSON_VALUE_LIST_R -> .
+    (50) JSON_VALUE_LIST_R -> . COMMA JSON_VALUE JSON_VALUE_LIST_R
+
+    RBRACKET        reduce using rule 41 (JSON_VALUE_LIST_R -> .)
+    COMMA           shift and go to state 94
+
+    JSON_VALUE_LIST_R              shift and go to state 93
+
+state 89
+
+    (35) JSON_VALUE -> JSON_VALUE_LIST .
+
+    COMMA           reduce using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+    RBRACKET        reduce using rule 35 (JSON_VALUE -> JSON_VALUE_LIST .)
+
+
+state 90
+
+    (36) JSON_VALUE -> JSON .
+
+    COMMA           reduce using rule 36 (JSON_VALUE -> JSON .)
+    RBRACKET        reduce using rule 36 (JSON_VALUE -> JSON .)
+
+
+state 91
+
+    (63) JSON_VALUE -> LPARANTHESIS EXPRESSION . RPARANTHESIS
+
+    RPARANTHESIS    shift and go to state 95
+
+
+state 92
+
+    (67) VALUE_LIST_R -> COMMA EXPRESSION_ELEM VALUE_LIST_R .
+
+    RBRACKET        reduce using rule 67 (VALUE_LIST_R -> COMMA EXPRESSION_ELEM VALUE_LIST_R .)
+
+
+state 93
+
+    (51) JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R . RBRACKET
+
+    RBRACKET        shift and go to state 96
+
+
+state 94
+
+    (50) JSON_VALUE_LIST_R -> COMMA . JSON_VALUE JSON_VALUE_LIST_R
+    (35) JSON_VALUE -> . JSON_VALUE_LIST
+    (36) JSON_VALUE -> . JSON
+    (53) JSON_VALUE -> . IDENTIFIER
+    (54) JSON_VALUE -> . INTEGER
+    (55) JSON_VALUE -> . FLOAT
+    (56) JSON_VALUE -> . STRING
+    (57) JSON_VALUE -> . ENV_VAR
+    (60) JSON_VALUE -> . BOOL
+    (63) JSON_VALUE -> . LPARANTHESIS EXPRESSION RPARANTHESIS
+    (34) JSON_VALUE_LIST -> . LBRACKET RBRACKET
+    (51) JSON_VALUE_LIST -> . LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET
+    (31) JSON -> . LCURLYBRACES JSON_KV_LIST RCURLYBRACES
+    (37) ENV_VAR -> . DOLLLAR IDENTIFIER
+
+    IDENTIFIER      shift and go to state 73
+    INTEGER         shift and go to state 78
+    FLOAT           shift and go to state 79
+    STRING          shift and go to state 80
+    BOOL            shift and go to state 82
+    LPARANTHESIS    shift and go to state 83
+    LBRACKET        shift and go to state 77
+    LCURLYBRACES    shift and go to state 33
+    DOLLLAR         shift and go to state 32
+
+    JSON_VALUE                     shift and go to state 97
+    JSON_VALUE_LIST                shift and go to state 89
+    JSON                           shift and go to state 90
+    ENV_VAR                        shift and go to state 81
+
+state 95
+
+    (63) JSON_VALUE -> LPARANTHESIS EXPRESSION RPARANTHESIS .
+
+    COMMA           reduce using rule 63 (JSON_VALUE -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    RCURLYBRACES    reduce using rule 63 (JSON_VALUE -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+    RBRACKET        reduce using rule 63 (JSON_VALUE -> LPARANTHESIS EXPRESSION RPARANTHESIS .)
+
+
+state 96
+
+    (51) JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET .
+
+    COMMA           reduce using rule 51 (JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET .)
+    RCURLYBRACES    reduce using rule 51 (JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET .)
+    RBRACKET        reduce using rule 51 (JSON_VALUE_LIST -> LBRACKET JSON_VALUE JSON_VALUE_LIST_R RBRACKET .)
+
+
+state 97
+
+    (50) JSON_VALUE_LIST_R -> COMMA JSON_VALUE . JSON_VALUE_LIST_R
+    (41) JSON_VALUE_LIST_R -> .
+    (50) JSON_VALUE_LIST_R -> . COMMA JSON_VALUE JSON_VALUE_LIST_R
+
+    RBRACKET        reduce using rule 41 (JSON_VALUE_LIST_R -> .)
+    COMMA           shift and go to state 94
+
+    JSON_VALUE_LIST_R              shift and go to state 98
+
+state 98
+
+    (50) JSON_VALUE_LIST_R -> COMMA JSON_VALUE JSON_VALUE_LIST_R .
+
+    RBRACKET        reduce using rule 50 (JSON_VALUE_LIST_R -> COMMA JSON_VALUE JSON_VALUE_LIST_R .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IDENTIFIER in state 26 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 26 resolved as shift
+WARNING: shift/reduce conflict for LPARANTHESIS in state 26 resolved as shift
+WARNING: reduce/reduce conflict in state 74 resolved using rule (JSON_KV -> IDENTIFIER DOTS JSON)
+WARNING: rejected rule (JSON_VALUE -> JSON) in state 74
+WARNING: reduce/reduce conflict in state 75 resolved using rule (JSON_VALUE -> JSON_VALUE_LIST)
+WARNING: rejected rule (JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST) in state 75
+WARNING: Rule (JSON_KV -> IDENTIFIER DOTS JSON_VALUE_LIST) is never reduced

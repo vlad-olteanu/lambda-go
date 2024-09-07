@@ -1,0 +1,35 @@
+# cast float to int
+f1::float->int.
+f1 x = <int> x.
+
+# cast int to float
+f2::int->float.
+f2 x = <float> x.
+
+# cast any to an int
+f3::any->int.
+f3 x = <int> x.
+
+# cast any to a dict
+f4::any->dict.
+f4 x = <dict> x.
+
+# cast any to a function
+f5::any->(int->int).
+f5 x = <int->int> x.
+
+# cast a list of ints to a list of floats
+f6::[int]->[float].
+f6 x = <[float]> x.
+
+# cast an imbricated list of ints to an imbricated list of floats
+f7::[[[int]]]->[[[float]]].
+f7 x = <[[[float]]]> x.
+
+# cast a list of any to a list of dicts
+f8::[any]->[dict].
+f8 x = <[dict]> x.
+
+# cast a list of any to a list of different depth
+f9::[[any]]->[[[[int]]]].
+f9 x = <[[[[int]]]]> x.

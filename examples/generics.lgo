@@ -1,0 +1,17 @@
+sum1::float->float->float.
+sum1 x y = add x y.
+
+sum2::int->int->int.
+sum2 x y = add x y.
+
+is_odd::int->bool.
+is_odd x = (x % 2) == 1.
+
+f1::[int]->[int].
+f1 xs = filter is_odd xs.
+
+inc::float->float.
+inc a = a + 1.0.
+
+f2::[float]->[float].
+f2 xs = map inc xs.

@@ -1,0 +1,1 @@
+from .grammar_generation import generate_grammar

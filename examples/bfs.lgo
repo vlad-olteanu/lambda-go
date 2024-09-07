@@ -1,0 +1,40 @@
+# Breadth first search
+
+# element at index i in list xs equals n
+idx_eq::int->int->[int]->bool.
+idx_eq i n xs = (idx xs i) == n.
+
+# n does not belong to xs
+not_found_in_list::[int]->int->bool.
+not_found_in_list xs n = (len (filter (eq n) xs)) == 0.
+
+idx2::int->[int]->int.
+idx2 n xs = idx xs n.
+
+# list of neighbors of node n not yet visited
+neighbors_not_visited::int->[[int]]->[int]->[int].
+neighbors_not_visited n adj_list visited = (
+                                        # only keep the nodes not yet visited
+                                        filter (not_found_in_list visited) 
+                                            (
+                                                # only keep the edge's target node
+                                                map (idx2 1) 
+                                                # all the edges with n as the starting point
+                                                (filter (idx_eq 0 n) adj_list)
+                                            )
+                                        ).
+
+
+bfs::[[int]]->[int]->[int]->[int].
+bfs adj_list visited queue | (len queue) > 0 = [(idx queue 0)] ++ (bfs adj_list
+                                                    # mark the current node as visited
+                                                    (visited ++ [(idx queue 0)])  
+                                                    (
+                                                        # remove the current node from the queue
+                                                        (filter (neq (idx queue 0)) queue) ++ 
+                                                        # add n's unvisited neighbors to the queue
+                                                        (neighbors_not_visited (idx queue 0) adj_list visited)
+                                                    )
+                                                )
+                            | otherwise = (<[int]> []).
+

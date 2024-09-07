@@ -1,0 +1,10 @@
+# split list into odds and evens
+is_odd::int->bool.
+is_odd x = (x % 2) == 1.
+
+append_to_odd_or_even::int->dict->dict.
+append_to_odd_or_even x d   | is_odd x = dict_set d "odds" ((<[int]> (dict_get d "odds")) ++ [x])
+                            | otherwise = dict_set d "evens" ((<[int]> (dict_get d "evens")) ++ [x]).
+
+split_by_evenness::[int]->dict.
+split_by_evenness xs = reduce append_to_odd_or_even xs {odds: (<[int]> []), evens: (<[int]> [])}.

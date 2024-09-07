@@ -1,0 +1,73 @@
+# functions of one variable
+f1::int->int.
+f1 a = a + 1.
+
+f2::float->float.
+f2 a = a + 1.0.
+
+# function of multiple variables
+f3::float->float->float->float.
+f3 x y z = x * (y + z).
+
+# List functions, partial function application
+# filter
+f4::[int]->[int].
+f4 xs = filter (neq 5) xs.
+
+is_odd::int->bool.
+is_odd x = (x % 2) == 1.
+
+f5::[int]->[int].
+f5 xs = filter is_odd xs.
+
+# map
+f6::[int]->[int].
+f6 xs = map f1 xs.
+
+f7::[int]->[bool].
+f7 xs = map is_odd xs.
+
+# reduce
+add_ints::int->int->int.
+add_ints x y = x + y.
+
+sum::[int]->int.
+sum xs = reduce add_ints xs 0.
+
+# List literals
+f8::int->int.
+f8 x = sum [1,2,3,(x+1)].
+
+# type casting
+f9::int->float.
+f9 a = (<float> a) + 2.0.
+
+# casting to a function type
+f10::[int]->any->int.
+f10 xs f = (<[int]->int> f) xs.
+
+# casting imbricated list types
+f11::any->[[[int]]].
+f11 x = <[[[int]]]> [[[]]].
+
+f12::any->[[int]].
+f12 x = <[[int]]> (<[any]> [[]]).
+
+f13::[[[int]]]->[[[float]]].
+f13 x = <[[[float]]]> x.
+
+# Dictionaries
+# accesing dict fields
+f14::dict->any.
+f14 d = dict_get d "field".
+
+# casting dict field to the correct type
+f15::dict->str.
+f15 d = <str> (dict_get d "field").
+
+f16::dict->int.
+f16 d = sum (<[int]> (dict_get d "numbers")).
+
+# Setting dict fields
+f17::dict->int->dict.
+f17 d n = dict_set d "field" n.
